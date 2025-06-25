@@ -1,0 +1,30 @@
+# inventory-service.yml (في مجلد config-repo)
+server:
+  port: 8001 # تعيين المنفذ إلى 0 للسماح لـ Spring Boot بتعيين منفذ عشوائي
+
+spring:
+  config:
+    import: "optional:configserver:http://localhost:8888"
+  application:
+    name: inventory-service # اسم التطبيق الذي سيسجل في Eureka
+  datasource:
+    url: jdbc:h2:mem:inventorydb # استخدام قاعدة بيانات H2 في الذاكرة
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update # إنشاء أو تحديث جداول قاعدة البيانات تلقائيًا
+  h2:
+    console:
+      enabled: true # تمكين واجهة تحكم H2 للوصول إلى قاعدة البيانات (للتصحيح)
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/ # عنوان خادم الاكتشاف
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${random.value} # معرف فريد لكل مثيل من الخدمة
+    prefer-ip-address: true
