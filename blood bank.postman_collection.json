@@ -1,0 +1,232 @@
+{
+	"info": {
+		"_postman_id": "59eaea25-9f6d-44ac-83b8-cc9bac4d6d86",
+		"name": "blood bank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6501816"
+	},
+	"item": [
+		{
+			"name": "create donor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n  \"userId\": \"user-1\",\r\n  \"bloodType\": \"B_NEG\",\r\n  \"dateOfBirth\": \"1990-01-01\",\r\n  \"contactInfo\": {\r\n    \"phone\": \"0591234567\",\r\n    \"address\": \"Gaza\"\r\n  },\r\n  \"healthInfo\": {\r\n    \"eligibilityStatus\": true,\r\n    \"lastDonationDate\": \"2025-06-01\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/donors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"donors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view donor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/BloodBankApi/donors/7387809e-5855-4f0d-b26c-ab41ff002cca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"BloodBankApi",
+						"donors",
+						"7387809e-5855-4f0d-b26c-ab41ff002cca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search donor",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": " application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/BloodBankApi/request/potential-donors?bloodType=B_NEG",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"BloodBankApi",
+						"request",
+						"potential-donors"
+					],
+					"query": [
+						{
+							"key": "bloodType",
+							"value": "B_NEG"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add blood",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"bloodType\": \"O_POS\",\r\n  \"collectionDate\": \"2024-05-10\",\r\n  \"expiryDate\": \"2024-11-10\",\r\n  \"hospitalId\": \"hospital-uuid\",\r\n  \"status\": \"AVAILABLE\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/BloodBankApi/inventory/units?Content-Type=application/json&Accept=application/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"BloodBankApi",
+						"inventory",
+						"units"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Accept",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view blood",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/BloodBankApi/inventory/units/26097c36-4736-4eb0-a77a-f7374cfbd39a?Accept=application/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"BloodBankApi",
+						"inventory",
+						"units",
+						"26097c36-4736-4eb0-a77a-f7374cfbd39a"
+					],
+					"query": [
+						{
+							"key": "Accept",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update donor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userId\": \"user-uuid-123\",\r\n  \"bloodType\": \"B_NEG\",\r\n  \"dateOfBirth\": \"1998-05-15\",\r\n  \"contactInfo\": {\r\n    \"phone\": \"0592428878\",\r\n    \"address\": \"Rafah\"\r\n  },\r\n  \"healthInfo\": {\r\n    \"eligibilityStatus\": false,\r\n    \"lastDonationDate\": \"2025-05-28\"\r\n  },\r\n  \"rewardPoints\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/BloodBankApi/donors/7387809e-5855-4f0d-b26c-ab41ff002cca?Content-Type=application/json&Accept=application/json",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"BloodBankApi",
+						"donors",
+						"7387809e-5855-4f0d-b26c-ab41ff002cca"
+					],
+					"query": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Accept",
+							"value": "application/json"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete donor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/BloodBankApi/donors/7387809e-5855-4f0d-b26c-ab41ff002cca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"BloodBankApi",
+						"donors",
+						"7387809e-5855-4f0d-b26c-ab41ff002cca"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
