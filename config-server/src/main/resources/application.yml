@@ -1,18 +1,16 @@
 server:
-  port: 8888
+  port: 8083
 
 spring:
   application:
     name: config-server
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: file:///"C:/Users/Samar Arafah/bloodbank-config"
-          clone-on-start: true
-          search-paths:
-            - '{application}'
-            - '{application}-{profile}'
+        native:
+          search-locations: file:./config
 
 eureka:
   client:

@@ -1,10 +1,9 @@
 # inventory-service.yml (في مجلد config-repo)
 server:
-  port: 0 # تعيين المنفذ إلى 0 للسماح لـ Spring Boot بتعيين منفذ عشوائي
+  port: 8001 # تعيين المنفذ إلى 0 للسماح لـ Spring Boot بتعيين منفذ عشوائي
 
 spring:
-  config:
-    import: "optional:configserver:http://localhost:8888"
+
   application:
     name: inventory-service # اسم التطبيق الذي سيسجل في Eureka
   datasource:

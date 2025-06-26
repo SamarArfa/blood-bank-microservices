@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: donor-service
+  config:
+    import: "configserver:http://localhost:8083"
